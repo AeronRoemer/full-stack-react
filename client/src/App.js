@@ -1,34 +1,47 @@
 import React, { Component } from 'react';
-import HeaderCom from './components/Header.js'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './styles/reset.css';
 import './styles/global.css';
+
+//import Data retrieved from API
+import withContext from './Context';
+import Header from './components/Header.js'
+import UserSignIn from './components/UserSignIn.js'
+import NotFound from './components/NotFound.js'
 //fetch polyfill
+
+//add context to components
+const HeaderWithContext = withContext(Header);
+const UserSignInWithContext = withContext(UserSignIn);
 class App extends Component {
-  getUsers(){
-    fetch('http://localhost:5000/api/users', {
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      }
-    }).then(response => response.json()).then(data => data.map(item => console.log(item.id)))
-  }
 
 
     render(){  
 
   return (
-    <div className="App">
-      <header className="App-header">
-      <HeaderCom />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-          {this.getUsers()}
+  <Router>
+    <div>
+      <HeaderWithContext />
 
-        
-      </header>
+      <Switch>
+
+        <Route path="/signin" component={UserSignInWithContext} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
+  </Router>
   );
   };
 }
 
 export default App;
+
+{/* <Route exact path="/" component={Public} />
+<PrivateRoute path="/authenticated" component={AuthWithContext} />
+<Route path="/signup" component={UserSignUpWithContext} />
+        <Route path="/signout" component={UserSignOutWithContext} />
+         */}
