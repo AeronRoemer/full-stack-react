@@ -208,9 +208,18 @@ body {
 /* line 13, ../sass/global.sass */
 .header {
   background: #57496e;
-  padding: 20px 0;
+  padding: 20px 10px;
   margin-bottom: 30px;
 }
+
+/* line 13, ../sass/global.sass */
+.subheader {
+  background: #b4b1b8;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
 /* line 17, ../sass/global.sass */
 .header--logo {
   color: #fff;
