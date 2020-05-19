@@ -22,7 +22,7 @@ export default class Header extends React.PureComponent {
               <React.Fragment>
                 <Link className="signup" to="/signup">Sign Up</Link>
                 <Link className="signin" to="/signin">Sign In</Link>
-                <Link className="signin" to="/home">Home</Link>
+                <Link className="signin" to="/">Home</Link>
               </React.Fragment>
             }  
           </nav>

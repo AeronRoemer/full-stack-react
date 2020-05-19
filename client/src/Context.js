@@ -10,9 +10,9 @@ export class Provider extends Component {
     super();
     this.data = new Data();
   }
-
+//Cookies.getJSON('authenticatedUser') ||
   state = {
-    authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+    authenticatedUser:  null
   };
 
 
@@ -25,7 +25,7 @@ export class Provider extends Component {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut
-      }
+      } //included for authentication
     };
     return (
       <Context.Provider value={ value }>
@@ -35,8 +35,8 @@ export class Provider extends Component {
   }
 
   
-  signIn = async (username, password) => {
-    const user = await this.data.getUser(username, password)
+  signIn = async (emailAddress, password) => {
+    const user = await this.data.getUser(emailAddress, password)
     if (user !== null) {
       this.setState(() => {
         return { authenticatedUser: user }

@@ -15,22 +15,20 @@ export default class Data {
       options.body = JSON.stringify(body);
     }
 
-    // // Check if auth is required
-    // if (requiresAuth) {    
-    //   //btoa creates a base-64 encoded string of data
-    // const encodedCredentials = btoa(`${credentials.username}:${credentials.password}`);
-    // //sets Authorization headers to Basic and sends encoded credentials
-    // options.headers['Authorization'] = `Basic ${encodedCredentials}`;
-    // }
+    // Check if auth is required
+    if (requiresAuth) {    
+      //btoa creates a base-64 encoded string of data
+    const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);
+    //sets Authorization headers to Basic and sends encoded credentials
+    options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+    }
 
     return fetch(url, options)
     
   }
-//username, password
-  async getUser() {
-    const response = await this.api(`/users`, 'GET', null,  true, 
-    //{ username, password }
-    );
+
+  async getUser(emailAddress, password) {
+    const response = await this.api(`/user`, 'GET', null,  true, { emailAddress, password });
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -50,6 +48,7 @@ export default class Data {
       return response.json().then(data => console.log(data));
     }
     else if (response.status === 401) {
+
       return null;
     }
     else {
