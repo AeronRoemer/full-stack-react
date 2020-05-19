@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-//import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import Data from './Data';
 
-const Context = React.createContext(); 
+export const Context = React.createContext(); 
 
 export class Provider extends Component {
 
@@ -12,22 +12,21 @@ export class Provider extends Component {
   }
 
   state = {
-    //authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null
   };
 
 
   render() {
-    //const { authenticatedUser } = this.state;
+    const { authenticatedUser } = this.state;
 
     const value = {
-      //authenticatedUser,
+      authenticatedUser,
       data: this.data,
-      // actions: {
-      //   signIn: this.signIn,
-      //   signOut: this.signOut
-      // }
+      actions: {
+        signIn: this.signIn,
+        signOut: this.signOut
+      }
     };
-    
     return (
       <Context.Provider value={ value }>
         {this.props.children}
@@ -36,21 +35,21 @@ export class Provider extends Component {
   }
 
   
-  // signIn = async (username, password) => {
-  //   const user = await this.data.getUser(username, password)
-  //   if (user !== null) {
-  //     this.setState(() => {
-  //       return { authenticatedUser: user }
-  //   })};
-  //         // Set cookie
-  //         Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
-  //   return user;
-  // }
+  signIn = async (username, password) => {
+    const user = await this.data.getUser(username, password)
+    if (user !== null) {
+      this.setState(() => {
+        return { authenticatedUser: user }
+    })};
+          // Set cookie
+          Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+    return user;
+  }
 
-  // signOut = () => {
-  //   this.setState({ authenticatedUser: null });
-  //   Cookies.remove('authenticatedUser');
-  // }
+  signOut = () => {
+    this.setState({ authenticatedUser: null });
+    Cookies.remove('authenticatedUser');
+  }
 }
 
 export const Consumer = Context.Consumer;

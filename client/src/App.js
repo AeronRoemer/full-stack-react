@@ -4,8 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import './styles/reset.css';
-import './styles/global.css';
+
 
 //import Data retrieved from API
 import Header from './components/Header.js'
@@ -21,11 +20,12 @@ import withContext from './Context';
 const HeaderWithContext = withContext(Header);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
+
+
 class App extends Component {
 
-
+  
     render(){  
-
   return (
   <Router>
     <div>
