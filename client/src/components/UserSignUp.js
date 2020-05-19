@@ -61,7 +61,7 @@ export default class UserSignUp extends Component {
     );
   }
 
-  change = (event) => {
+  change = (event) => { //updates state value on changes to form
     const name = event.target.name;
     const value = event.target.value;
 
@@ -88,17 +88,19 @@ export default class UserSignUp extends Component {
       password,
     };
 
-   //calls createUser which was passed via context
+   //calls createUser which was passed via value object in context
    //passes 'user' data to API to 'POST' a user
     context.data.createUser(user)
       .then( errors => {
         if (errors.length) {
           this.setState({ errors });
         } else {
-          context.actions.signIn(username, password)
-          .then(() => {
-            this.props.history.push('/authenticated');    
-          });
+          console.log("Sent user to db")
+          // context.actions.signIn(username, password)
+          // .then(() => {
+          //   this.props.history.push('/authenticated');    
+          // }
+          //);
 
         }
       }).catch( err => { 

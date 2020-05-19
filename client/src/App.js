@@ -8,12 +8,13 @@ import './styles/reset.css';
 import './styles/global.css';
 
 //import Data retrieved from API
-import withContext from './Context';
 import Header from './components/Header.js'
 import Home from './components/Home.js'
 import UserSignIn from './components/UserSignIn.js'
 import UserSignUp from './components/UserSignUp.js'
 import NotFound from './components/NotFound.js'
+
+import withContext from './Context';
 //fetch polyfill
 
 //add context to components
@@ -32,7 +33,7 @@ class App extends Component {
       <Switch>
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route component={NotFound} />
       </Switch>
     </div>

@@ -23,7 +23,8 @@ export default (props) => {
     <div>
       <ErrorsDisplay errors={errors} />
       <form onSubmit={handleSubmit}>
-        {elements()}
+        {elements() //individual element details can be found on the related page (UserSignUp.js, etc)
+        } 
         <div className="pad-bottom">
           <button className="button" type="submit">{submitButtonText}</button>
           <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
