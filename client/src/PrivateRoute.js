@@ -14,6 +14,7 @@ export default ({ component: Component, ...rest }) => {
               <Redirect to={{
                   pathname: '/signin',// else, redirect to signin
                   state: { from: props.location }, //save the page they tried to access
+                  //state hold location information authomatically
                 }} /> 
             )
 

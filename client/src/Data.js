@@ -40,15 +40,12 @@ export default class Data {
     }
   }
 
-  async getCourses() {
-    const response = await this.api(`/courses`, 'GET', null,  true,
-    // { username, password }
-    );
+  async getAllCourses() {
+    const response = await this.api(`/courses`, 'GET', null);
     if (response.status === 200) {
-      return response.json().then(data => console.log(data));
+      return response.json().then(data => data);
     }
     else if (response.status === 401) {
-
       return null;
     }
     else {

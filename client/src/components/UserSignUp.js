@@ -106,14 +106,9 @@ export default class UserSignUp extends Component {
         if (errors.length) {
           this.setState({ errors });
           console.log(errors); // log error
-        } else {
-          console.log("Sent user to db")
-          this.props.history.push('/'); 
-          // context.actions.signIn(username, password)
-          // .then(() => {
-          //   this.props.history.push('/authenticated');    
-          // }
-          //);
+        } else { //redirects as if user had signed in
+           context.actions.signIn(emailAddress, password)
+           .then(() => { this.props.history.push('/authenticated');    });
 
         }
       }).catch( err => { 

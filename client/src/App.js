@@ -22,6 +22,7 @@ import withContext from './Context';
 //add context to components
 const HeaderWithContext = withContext(Header);
 const AuthWithContext = withContext(Authenticated);
+const HomeWithContext = withContext(Home);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut);
@@ -39,7 +40,8 @@ class App extends Component {
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
         <PrivateRoute path="/authenticated" component={AuthWithContext} />
-        <Route exact path="/" component={Home} />
+        <Route path="/home" component={HomeWithContext} />
+        <Route exact path="/" component={HomeWithContext} />
         <Route component={NotFound} />
       </Switch>
     </div>

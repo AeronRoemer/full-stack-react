@@ -10,9 +10,9 @@ export class Provider extends Component {
     super();
     this.data = new Data();
   }
-//Cookies.getJSON('authenticatedUser') ||
+
   state = {
-    authenticatedUser:  null
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null //pulls data from cookie as an authenticatedUser object or else returns null
   };
 
 
@@ -24,7 +24,8 @@ export class Provider extends Component {
       data: this.data,
       actions: {
         signIn: this.signIn,
-        signOut: this.signOut
+        signOut: this.signOut,
+        getAllCourses: this.getAllCourses,
       } //included for authentication
     };
     return (
@@ -41,14 +42,21 @@ export class Provider extends Component {
       this.setState(() => {
         return { authenticatedUser: user }
     })};
-          // Set cookie
-          Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+    // Set cookie
+    Cookies.set('authenticatedUser', //cookie name
+      JSON.stringify(user), //stringified user data
+      { expires: 1 }); //expires in one day
     return user;
   }
 
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove('authenticatedUser');
+  }
+
+  getAllCourses = async () => {
+    const courseData = await this.data.getAllCourses()
+    return courseData;
   }
 }
 
