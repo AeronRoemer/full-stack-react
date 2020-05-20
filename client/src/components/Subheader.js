@@ -11,11 +11,10 @@ export default class Header extends React.PureComponent {
             <nav>
               {
                 <React.Fragment>
-                  <Link className="signup" to="/signup">All Courses</Link>
+                  <Link className="signup" to="/signu">All Courses</Link>
                   <Link className="signin" to="/signin">My Courses</Link>
-                  <Link className="signin" to="/home">Search</Link>
+                  <Link className="signin" to="/">Home</Link>
                 </React.Fragment>
-                
               }  
             </nav>
           </div>
