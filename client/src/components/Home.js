@@ -14,6 +14,7 @@ const AllCoursesWithContext = withContext(AllCourses)
 
 export default ({ context }) => {
   const authUser = context.authenticatedUser;
+
   return (
   <div className="bounds">
     <div>
@@ -28,3 +29,19 @@ export default ({ context }) => {
   </div>
   )
 };
+
+{/*  
+  To render with PRops: PASS COMPONENT RENDER THRU FUNCTION 
+  render={()=>(
+    <Component props={object} />
+  )}
+  TO PASS STATE:::::::::::::::::::::::::
+  <Link to={{
+ pathname: '/courses',
+ search: '?sort=name',
+ hash: '#the-hash',
+ state: { fromDashboard: true }
+}}>
+ Courses
+</Link>
+*/}

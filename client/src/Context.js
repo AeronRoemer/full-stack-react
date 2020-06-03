@@ -14,7 +14,7 @@ export class Provider extends Component {
   state = {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null, //pulls data from cookie as an authenticatedUser object or else returns null
     query: '',
-    courses: '',
+    courses: [],
   };
 
   updateQuery = (query) => {
@@ -26,7 +26,6 @@ export class Provider extends Component {
   componentDidMount(){
     this.data.getAllCourses()
     .then((data)=>{
-      console.log(data)
       this.setState(() => ({
         courses: data
       }))
@@ -39,11 +38,11 @@ export class Provider extends Component {
     const value = {
       authenticatedUser,
       data: this.data,
-      courses: this.courses,
+      courses: this.state.courses,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
-        getAllCourses: this.getAllCourses,
+        getAllCourses: this.data.getAllCourses,
       } //included for authentication
     };
     return (
