@@ -12,16 +12,34 @@ export class Provider extends Component {
   }
 
   state = {
-    authenticatedUser: Cookies.getJSON('authenticatedUser') || null //pulls data from cookie as an authenticatedUser object or else returns null
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null, //pulls data from cookie as an authenticatedUser object or else returns null
+    query: '',
+    courses: '',
   };
 
+  updateQuery = (query) => {
+    this.setState(() => ({
+        query: query.trim()
+    }))
+  }
 
+  componentDidMount(){
+    this.data.getAllCourses()
+    .then((data)=>{
+      console.log(data)
+      this.setState(() => ({
+        courses: data
+      }))
+    })
+  }
+  
   render() {
     const { authenticatedUser } = this.state;
 
     const value = {
       authenticatedUser,
       data: this.data,
+      courses: this.courses,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
@@ -54,10 +72,6 @@ export class Provider extends Component {
     Cookies.remove('authenticatedUser');
   }
 
-  getAllCourses = async () => {
-    const courseData = await this.data.getAllCourses()
-    return courseData;
-  }
 }
 
 export const Consumer = Context.Consumer;
