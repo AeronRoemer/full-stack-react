@@ -17,12 +17,6 @@ export class Provider extends Component {
     courses: [],
   };
 
-  updateQuery = (query) => {
-    this.setState(() => ({
-        query: query.trim()
-    }))
-  }
-
   componentDidMount(){
     this.data.getAllCourses()
     .then((data)=>{
@@ -43,6 +37,7 @@ export class Provider extends Component {
         signIn: this.signIn,
         signOut: this.signOut,
         getAllCourses: this.data.getAllCourses,
+        
       } //included for authentication
     };
     return (
@@ -77,8 +72,10 @@ export const Consumer = Context.Consumer;
 
 /**
  * A higher-order component that wraps the provided component in a Context Consumer component.
+ * Rather than including the context consumer in each component's render method
  * @param {class} Component - A React component.
  * @returns {function} A higher-order component.
+ * Creates a connected component so later components will have access to Context in render() and not just return statements
  */
 
 export default function withContext(Component) {

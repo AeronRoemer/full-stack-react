@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 //filter with search
-export default ({context}) => { 
-  
+export default class CourseDisplay extends Component { 
 
-  let allCourses = context.courses
+  render(){
+  const allCourses = this.props.context.courses
   return (
     
   <div className="bounds">
     <div className="grid-100">
-      Courses to appear here
       <ol className="course-list">
-             { allCourses.map((course) =>(
+             {allCourses.map((course) =>(
                  <li key={course.id} className='course-list-item'>
                      <div className='contact-avatar'></div>
                      <div className='contact-details'>
@@ -23,6 +22,7 @@ export default ({context}) => {
     </div>
   </div>
   );
+             }
   }
 
 
