@@ -11,11 +11,11 @@ import {
 import Header from './components/Header.js'
 import PrivateRoute from './PrivateRoute.js'
 import HomeSubHeader from './components/HomeSubHeader.js'
-import Authenticated from './components/Authenticated.js'
-import UserSignIn from './components/UserSignIn.js'
-import UserSignUp from './components/UserSignUp.js'
-import UserSignOut from './components/UserSignOut.js'
-import RandomFour from './components/RandomFour.js'
+import Authenticated from './components/userFunctionality/Authenticated.js'
+import UserSignIn from './components/userFunctionality/UserSignIn.js'
+import UserSignUp from './components/userFunctionality/UserSignUp.js'
+import UserSignOut from './components/userFunctionality/UserSignOut.js'
+import RandomFour from './components/courseDisplay/RandomFour.js'
 import NotFound from './components/NotFound.js'
 //import Data retrieved from API with context
 import withContext from './Context';

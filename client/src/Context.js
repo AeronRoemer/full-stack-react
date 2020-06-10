@@ -24,6 +24,7 @@ export class Provider extends Component {
         courses: data
       }))
     })
+    
   }
   
   render() {
@@ -36,8 +37,6 @@ export class Provider extends Component {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
-        getAllCourses: this.data.getAllCourses,
-        
       } //included for authentication
     };
     return (
@@ -46,7 +45,6 @@ export class Provider extends Component {
       </Context.Provider>  
     );
   }
-
   
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password)
@@ -57,7 +55,7 @@ export class Provider extends Component {
     // Set cookie
     Cookies.set('authenticatedUser', //cookie name
       JSON.stringify(user), //stringified user data
-      { expires: 1 }); //expires in one day
+      { expires: 1, sameSite: 'Lax', }); //expires in one day
     return user;
   }
 

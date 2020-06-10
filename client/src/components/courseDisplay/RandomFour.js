@@ -13,6 +13,7 @@ export default ({ context }) => {
      }
      return array;
    }
+   //could eb moved to context since UserCourses and AllCourses will use this
    function trimCourses (str) {
        if (str.length <= 200) return str;
        return str.substr(0, str.lastIndexOf(" ", 200));
@@ -28,7 +29,7 @@ export default ({ context }) => {
                       <div className='contact-details'>
                           <h1>{course.title}</h1>
                           <p>{trimCourses(course.description)} ...</p>
-                          <Link className="signup" to={`/courses/${course.id}/`}>Read More</Link>
+                          <Link className="signup" to={`home/course/${course.id}`}>Read More</Link>
                       </div>
                   </li>
               ))}

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 //filter with search
-export default class CourseDisplay extends Component { 
-
-  render(){
-  const allCourses = this.props.context.courses
+export default ({context}) => {
+  const allCourses = context.courses
   return (
     
   <div className="bounds">
@@ -22,7 +20,5 @@ export default class CourseDisplay extends Component {
     </div>
   </div>
   );
-             }
-  }
-
+}
 
