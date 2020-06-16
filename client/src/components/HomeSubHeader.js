@@ -22,13 +22,13 @@ export default () => {
   <div className="bounds">
     <div>
         <Link className="signup" to="/">Home</Link>
-        <Link className="signup" to="/home/all">All Courses</Link>
-        <Link className="signup" to="/home/usercourses">User Courses</Link>
+        <Link className="signup" to="/courses/all">All Courses</Link>
+        <Link className="signup" to="/courses/usercourses">User Courses</Link>
         <SearchBarWithContext />
         {/* We don't need to define a route to '/home' here because it's already defined in App.js*/}
-          <Route path={`/home/all`} component={AllCoursesWithContext}/>
-          <Route path={`/home/usercourses`} component={UserCoursesWithContext}/>
-          <Route path={`/home/course/:id`} component={SingleCourseWithContext}/>
+          <Route path={`/courses/all`} component={AllCoursesWithContext}/>
+          <Route path={`/courses/usercourses`} component={UserCoursesWithContext}/>
+          <Route path={`/courses/:id`} component={SingleCourseWithContext}/>
 
     </div>
   </div>

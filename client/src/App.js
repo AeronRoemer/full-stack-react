@@ -43,7 +43,7 @@ class App extends Component {
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
         <PrivateRoute path="/authenticated" component={AuthWithContext} />
-        <Route path="/home" component={HomeSubHeaderWithContext} />
+        <Route path="/courses" component={HomeSubHeaderWithContext} />
         <Route exact path="/" component={() => (
           <div>
           <HomeSubHeaderWithContext />

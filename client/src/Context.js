@@ -15,6 +15,7 @@ export class Provider extends Component {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null, //pulls data from cookie as an authenticatedUser object or else returns null
     query: '',
     courses: [],
+    course: {}
   };
 
   componentDidMount(){
@@ -37,6 +38,7 @@ export class Provider extends Component {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
+        getCourse: this.getCourse,
       } //included for authentication
     };
     return (
@@ -45,7 +47,9 @@ export class Provider extends Component {
       </Context.Provider>  
     );
   }
-  
+  getCourse = async (id) =>{
+    return await this.data.getCourseData(id)
+  }
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password)
     if (user !== null) {

@@ -29,7 +29,7 @@ export default ({ context }) => {
                       <div className='contact-details'>
                           <h1>{course.title}</h1>
                           <p>{trimCourses(course.description)} ...</p>
-                          <Link className="signup" to={`home/course/${course.id}`}>Read More</Link>
+                          <Link className="signup" to={`/courses/${course.id}`}>Read More</Link>
                       </div>
                   </li>
               ))}
