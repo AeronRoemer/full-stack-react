@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Form from '../Form'
 
 //push 404 to stack if route not found
+//loading
 export default class SingleCourse extends Component {
   state = {
     course: {},
@@ -16,14 +17,23 @@ export default class SingleCourse extends Component {
         this.setState(() => {
           return { course: course }
           //need to push '404' to stack
-      }); console.log(this.state)
+      }); console.log(this.state.course, this.state.authUser)
     }).catch(err => console.log(err))
     }
     
   renderForm = () => {
     this.setState(()=>({update: true}))
   }
-
+  userMatch = (authUser, course) => {
+    if (authUser){
+    const userString = authUser.firstName + " " + authUser.lastName
+    if (userString === course.teacher){
+      console.log(userString, course.teacher)
+      return true
+    }}
+    console.log(course.teacher, 'FALSE!!')
+    return false
+  }
   render(){
   const {course, update, authUser} = this.state
   const allCourses = this.props.context.courses
@@ -49,13 +59,6 @@ export default class SingleCourse extends Component {
                   value={course.title} 
                   //onChange={this.change} 
                   placeholder={course.title} />
-                <input 
-                  id="course-teacher" 
-                  name="course-teacher" 
-                  type="text"
-                  value={course.teacher} 
-                  //onChange={this.change} 
-                  placeholder={course.teacher} />
                 <input 
                   id="course-materials" 
                   name="course-materials" 
@@ -88,7 +91,7 @@ export default class SingleCourse extends Component {
               <h2><strong>Materials: </strong>{course.materialsNeeded}</h2>
               <h2><strong>Time: </strong>{course.estimatedTime}</h2>
               <p>{course.description}</p>
-              <button onClick={() => this.renderForm()}>Update Course</button>
+              {this.userMatch(authUser, course) && <button onClick={() => this.renderForm()}>Update Course</button> }
             </div> }
     </div>
   </div>
