@@ -3,6 +3,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+//import { FaIconName } from 'react-icons/fa'
 
 //components
 import AllCourses from './courseDisplay/AllCourses.js';
@@ -26,9 +27,9 @@ export default () => {
         <Link className="signup" to="/courses/usercourses">User Courses</Link>
         <SearchBarWithContext />
         {/* We don't need to define a route to '/home' here because it's already defined in App.js*/}
-          <Route path={`/courses/all`} component={AllCoursesWithContext}/>
-          <Route path={`/courses/usercourses`} component={UserCoursesWithContext}/>
-          <Route path={`/courses/:id`} component={SingleCourseWithContext}/>
+        <Route path={`/courses/all`} component={AllCoursesWithContext}/>
+        <Route path={`/courses/usercourses`} component={UserCoursesWithContext}/>
+        <Route path={`/courses/:id`} component={SingleCourseWithContext}/>
 
     </div>
   </div>

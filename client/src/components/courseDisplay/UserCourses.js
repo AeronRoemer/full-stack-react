@@ -3,8 +3,8 @@ import React from 'react';
 export default (props) => {
 
   const userId = props.context.authenticatedUser.id
-  console.log(userId)
   const userCourses = props.context.courses.filter((item)=> item.userId == userId)
+  console.log(userCourses)
   //since we have the courses in props, we filter through them instead of making 
   // a new API call
   return (

@@ -6,7 +6,7 @@ export default class Course extends Component{
   }
   //filter through array to display matching results
   render(){
-    console.log(this.props.context.courses)
+    console.log(this.props.context)
   const allCourses = this.context.courses
   if (this.state.query){
     console.log(this.state.query)
@@ -16,7 +16,7 @@ export default class Course extends Component{
   <div className="bounds">
     <div className="grid-100">
       <ol className="course-list">
-             {this.state.display.map((course) =>(
+             {this.props.context.courses.map((course) =>(
                  <li key={course.id} className='course-list-item'>
                      <div className='contact-avatar'></div>
                      <div className='contact-details'>

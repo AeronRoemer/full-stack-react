@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import Form from '../Form'
 
 //push 404 to stack if route not found
@@ -13,12 +12,20 @@ export default class SingleCourse extends Component {
   
   componentDidMount(){
     const idMatch = this.props.match.params.id
-    this.props.context.data.getCourseData(idMatch).then(course =>{
+    this.props.context.data.getCourseData(idMatch).then((course) =>{
+    //this.props.context.data.getUserCourses(this.state.authUser.id).then((course) =>{
+      if(course){
         this.setState(() => {
           return { course: course }
           //need to push '404' to stack
-      }); console.log(this.state.course, this.state.authUser)
+      })
+      };
     }).catch(err => console.log(err))
+    }
+    componentWillUnmount() {
+      this.setState(() => {
+        return { course: {}}
+    })
     }
     
   renderForm = () => {
