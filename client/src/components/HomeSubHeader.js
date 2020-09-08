@@ -9,13 +9,13 @@ import {
 import AllCourses from './courseDisplay/AllCourses.js';
 import SingleCourse from './courseDisplay/SingleCourse.js';
 import UserCourses from './courseDisplay/UserCourses.js';
-import SearchBar from './SearchBar.js'
+import SearchForm from './SearchBar.js'
 
 //context components
 import withContext from '../Context';
 const UserCoursesWithContext = withContext(UserCourses)
 const AllCoursesWithContext = withContext(AllCourses)
-const SearchBarWithContext = withContext(SearchBar)
+const SearchBarWithContext = withContext(SearchForm)
 const SingleCourseWithContext = withContext(SingleCourse)
 
 export default () => {

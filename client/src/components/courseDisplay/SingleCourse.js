@@ -9,12 +9,12 @@ export default class SingleCourse extends Component {
     authUser: this.props.context.authenticatedUser,
     update: false,
   }
-  
+
   componentDidMount(){
     const idMatch = this.props.match.params.id
     this.props.context.data.getCourseData(idMatch).then((course) =>{
-    //this.props.context.data.getUserCourses(this.state.authUser.id).then((course) =>{
       if(course){
+        console.log('singleCourse mounted')
         this.setState(() => {
           return { course: course }
           //need to push '404' to stack
@@ -23,6 +23,7 @@ export default class SingleCourse extends Component {
     }).catch(err => console.log(err))
     }
     componentWillUnmount() {
+      console.log('singleCourse unmounted')
       this.setState(() => {
         return { course: {}}
     })
@@ -38,12 +39,10 @@ export default class SingleCourse extends Component {
       console.log(userString, course.teacher)
       return true
     }}
-    console.log(course.teacher, 'FALSE!!')
     return false
   }
   render(){
   const {course, update, authUser} = this.state
-  const allCourses = this.props.context.courses
 
   return (
     
@@ -92,6 +91,7 @@ export default class SingleCourse extends Component {
         </div>
       </div>
             :
+            
             <div className='contact-details' key={course.id}>
               <h1>{course.title}</h1>
               <h2><strong>Teacher: </strong>{course.teacher}</h2>

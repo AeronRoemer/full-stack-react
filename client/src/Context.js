@@ -24,7 +24,13 @@ export class Provider extends Component {
         courses: data
       }))
     })
-    
+    this.data.getUserCourses(12)
+    .then((data)=>{
+      console.log(data)
+      this.setState(() => ({
+        userCourses: data
+      }))
+    })
   }
   
   render() {
@@ -34,6 +40,7 @@ export class Provider extends Component {
       authenticatedUser,
       data: this.data,
       courses: this.state.courses,
+      userCourses: this.state.userCourses,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
